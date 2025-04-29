@@ -22,7 +22,7 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
   }, [isSpinning]);
 
   return (
-    <div className="h-[500px] w-full relative cursor-pointer">
+    <div className="h-[400px] w-full relative cursor-pointer flex items-center justify-center">
       {/* Display loading screen while the model is loading */}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-10">
@@ -33,7 +33,7 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
       )}
 
       {/* The Spline 3D model */}
-      <div onClick={onSpin} className="w-full h-full">
+      <div onClick={onSpin} className="w-[300px] h-[300px] mx-auto spline-container">
         <Spline
           scene="https://prod.spline.design/AphHP1HRKQk94T6p/scene.splinecode"
           onLoad={() => setIsLoading(false)}
