@@ -1,0 +1,38 @@
+
+<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle -->
+  <circle cx="150" cy="150" r="145" fill="#F3E5AB" stroke="#8B2323" stroke-width="5"/>
+  
+  <!-- Middle circle with patterns -->
+  <circle cx="150" cy="150" r="120" fill="#D4AF37" stroke="#8B2323" stroke-width="2"/>
+  
+  <!-- Inner circle -->
+  <circle cx="150" cy="150" r="80" fill="#8B2323" stroke="#D4AF37" stroke-width="3"/>
+  
+  <!-- Central hub -->
+  <circle cx="150" cy="150" r="20" fill="#40E0D0" stroke="#8B2323" stroke-width="2"/>
+  
+  <!-- Decorative elements -->
+  <g id="decorations">
+    <!-- Dividers -->
+    <line x1="150" y1="5" x2="150" y2="295" stroke="#8B2323" stroke-width="2"/>
+    <line x1="5" y1="150" x2="295" y2="150" stroke="#8B2323" stroke-width="2"/>
+    <line x1="53" y1="53" x2="247" y2="247" stroke="#8B2323" stroke-width="2"/>
+    <line x1="247" y1="53" x2="53" y2="247" stroke="#8B2323" stroke-width="2"/>
+    
+    <!-- Mantra symbols - simplified representations -->
+    <circle cx="150" cy="60" r="15" fill="#F3E5AB" stroke="#8B2323" stroke-width="1"/>
+    <circle cx="150" cy="240" r="15" fill="#F3E5AB" stroke="#8B2323" stroke-width="1"/>
+    <circle cx="60" cy="150" r="15" fill="#F3E5AB" stroke="#8B2323" stroke-width="1"/>
+    <circle cx="240" cy="150" r="15" fill="#F3E5AB" stroke="#8B2323" stroke-width="1"/>
+    
+    <!-- Decorative symbols at diagonals -->
+    <rect x="85" y="85" width="20" height="20" fill="#40E0D0" stroke="#8B2323" stroke-width="1"/>
+    <rect x="195" y="85" width="20" height="20" fill="#40E0D0" stroke="#8B2323" stroke-width="1"/>
+    <rect x="85" y="195" width="20" height="20" fill="#40E0D0" stroke="#8B2323" stroke-width="1"/>
+    <rect x="195" y="195" width="20" height="20" fill="#40E0D0" stroke="#8B2323" stroke-width="1"/>
+  </g>
+  
+  <!-- Handle -->
+  <rect x="145" y="290" width="10" height="40" fill="#CD853F" stroke="#8B2323" stroke-width="1"/>
+</svg>
