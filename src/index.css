@@ -113,3 +113,36 @@
 .mantra-text {
   animation: float-up 3s forwards;
 }
+
+/* Hide Spline watermark and attribution */
+[data-spline-loaded] + div,
+[data-spline-loaded] ~ div,
+.spline-watermark,
+div[style*="position: absolute; bottom: 16px; right: 16px;"],
+div[style*="bottom: 16px; right: 16px"],
+div[style*="z-index: 999999"],
+.spline-viewer::after,
+a[href*="spline.design"],
+div[class*="spline"],
+div[data-component="powered-by-spline"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Add an overlay at the bottom to cover the watermark area */
+.spline-container {
+  position: relative;
+}
+
+.spline-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 180px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999999;
+}

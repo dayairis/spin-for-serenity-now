@@ -22,7 +22,7 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
   }, [isSpinning]);
 
   return (
-    <div className="h-[500px] w-full relative cursor-pointer">
+    <div className="h-[500px] w-full relative cursor-pointer spline-container">
       {/* Display loading screen while the model is loading */}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-10">
@@ -37,8 +37,13 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
         <Spline
           scene="https://prod.spline.design/AphHP1HRKQk94T6p/scene.splinecode"
           onLoad={() => setIsLoading(false)}
+          style={{ width: '100%', height: '100%' }}
+          className="spline-viewer"
         />
       </div>
+      
+      {/* Additional overlay to ensure watermark is covered */}
+      <div className="absolute bottom-0 right-0 w-[180px] h-[50px] bg-background z-50"></div>
     </div>
   );
 };
