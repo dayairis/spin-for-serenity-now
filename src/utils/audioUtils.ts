@@ -15,11 +15,11 @@ export function useAudio() {
   useEffect(() => {
     // Create audio elements
     const spinAudio = new Audio();
-    spinAudio.src = '/sounds/spin.mp3';
+    spinAudio.src = '/sounds/sound-spin.mp3'; // 更新为正确的声音文件路径
     spinAudio.preload = 'auto';
     
     const bgmAudio = new Audio();
-    bgmAudio.src = '/sounds/bgm.mp3';
+    bgmAudio.src = '/sounds/bgm.mp3'; // 使用指定的背景音乐路径
     bgmAudio.loop = true;
     bgmAudio.preload = 'auto';
     

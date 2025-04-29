@@ -1,16 +1,16 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import FloatingText from './FloatingText';
 import { useAudio } from '@/utils/audioUtils';
 import { useMeritCounter } from '@/utils/storageUtils';
 import { cn } from '@/lib/utils';
+import PrayerWheel3D from './PrayerWheel3D';
 
 const PrayerWheel = () => {
   const [isSpinning, setIsSpinning] = useState(false);
   const [showMantra, setShowMantra] = useState(false);
   const [spinCount, setSpinCount] = useState(0);
-  const wheelRef = useRef<HTMLImageElement>(null);
   
   const { merit, incrementMerit } = useMeritCounter();
   const { isAudioLoaded, isBackgroundPlaying, playSpinSound, toggleBackgroundMusic } = useAudio();
@@ -64,30 +64,17 @@ const PrayerWheel = () => {
         <span>Merit: {merit}</span>
       </div>
       
-      {/* Prayer Wheel */}
+      {/* Prayer Wheel - Now using 3D model */}
       <div className="relative mb-8">
-        <div 
-          className="relative cursor-pointer"
-          onClick={handleSpin}
-        >
-          <img
-            ref={wheelRef}
-            src="/prayer-wheel.svg"
-            alt="Tibetan Prayer Wheel"
-            width={300}
-            height={300}
-            className={cn(
-              "prayer-wheel",
-              isSpinning && "spinning"
-            )}
-          />
+        <div className="relative cursor-pointer">
+          <PrayerWheel3D isSpinning={isSpinning} onSpin={handleSpin} />
           
           {/* Floating Mantra Text */}
           {showMantra && (
             <FloatingText
               text="Merit +1 · Om Mani Padme Hum"
               isVisible={showMantra}
-              className="top-0"
+              className="absolute top-0 left-1/2 -translate-x-1/2"
             />
           )}
         </div>
