@@ -1,63 +1,22 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import '@google/model-viewer';
+import React, { useState, useEffect } from 'react';
+import Spline from '@splinetool/react-spline';
 
 type PrayerWheel3DProps = {
   isSpinning: boolean;
   onSpin: () => void;
 };
 
-// Need to declare the model-viewer element for TypeScript
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'model-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        src: string;
-        'camera-controls'?: boolean;
-        'auto-rotate'?: boolean;
-        'rotation-per-second'?: string;
-        'ar'?: boolean;
-        'ar-modes'?: string;
-        'loading'?: 'auto' | 'lazy' | 'eager';
-        'ar-status'?: string;
-        'shadow-intensity'?: string;
-        'camera-orbit'?: string;
-        'field-of-view'?: string;
-        'environment-image'?: string;
-        'exposure'?: string;
-        'poster'?: string;
-        'alt'?: string;
-        'touch-action'?: string;
-      };
-    }
-  }
-}
-
 const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const modelViewerRef = useRef<HTMLElement>(null);
 
+  // Handle loading state
   useEffect(() => {
-    // Handle loading state
-    if (isLoading) {
+    // Reset loading state when spinning status changes
+    if (isSpinning) {
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading]);
-
-  // Apply rotation when spinning
-  useEffect(() => {
-    const modelViewer = modelViewerRef.current;
-    if (isSpinning && modelViewer) {
-      modelViewer.setAttribute('auto-rotate', 'true');
-      modelViewer.setAttribute('rotation-per-second', '60deg');
-      
-      // Stop auto-rotation after the spin animation completes
-      const timer = setTimeout(() => {
-        modelViewer.removeAttribute('auto-rotate');
-      }, 2000);
+      }, 500);
       return () => clearTimeout(timer);
     }
   }, [isSpinning]);
@@ -73,21 +32,12 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
         </div>
       )}
 
-      {/* The model-viewer 3D model */}
-      <div onClick={onSpin} className="w-[300px] h-[300px] mx-auto model-viewer-container">
-        <model-viewer
-          ref={modelViewerRef}
-          src="/models/prayer_wheel.glb"
-          camera-controls={false}
-          touch-action="pan-y"
-          shadow-intensity="1"
-          camera-orbit="0deg 75deg 2m"
-          field-of-view="30deg"
-          environment-image="neutral"
-          exposure="0.5"
-          alt="3D Prayer Wheel"
+      {/* The Spline 3D model */}
+      <div onClick={onSpin} className="w-[300px] h-[300px] mx-auto spline-container">
+        <Spline
+          scene="https://prod.spline.design/AphHP1HRKQk94T6p/scene.splinecode"
           onLoad={() => setIsLoading(false)}
-        ></model-viewer>
+        />
       </div>
     </div>
   );

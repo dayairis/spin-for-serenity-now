@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
 
 @tailwind base;
@@ -114,26 +115,21 @@
   animation: float-up 3s forwards;
 }
 
-/* Model-viewer styling */
-.model-viewer-container model-viewer {
-  width: 100%;
-  height: 100%;
-  --poster-color: transparent;
-  --progress-bar-color: #8B0000;
-  --progress-mask: transparent;
+/* Hide Spline logo and adjust container */
+.spline-container iframe {
+  pointer-events: auto;
 }
 
-/* Hide model-viewer controls and attribution */
-.model-viewer-container model-viewer::part(default-progress-bar) {
-  display: none;
+.spline-container [data-spline-logo="true"],
+.spline-container [data-name="Built with Spline"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
-/* Hide any attribution watermarks */
-[data-js-focus-visible] {
-  outline: none !important;
-}
-
-.model-viewer-ui__controls,
+/* Target common class names used by Spline for their logo */
+.spline-watermark,
+.spline-builder,
 [class*="watermark"],
 [class*="logo-container"] {
   display: none !important;
