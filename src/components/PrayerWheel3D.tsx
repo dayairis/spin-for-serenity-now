@@ -105,8 +105,8 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
           shadow-bias={-0.0001}
         />
         
-        {/* 环境 */}
-        <Environment preset="sunset" />
+        {/* 环境 - 修改为不需要外部加载的预设 */}
+        <color attach="background" args={["#f5f5f5"]} />
         
         {/* 地面 */}
         <mesh 
