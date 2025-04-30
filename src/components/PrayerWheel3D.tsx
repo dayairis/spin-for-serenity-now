@@ -9,7 +9,7 @@ type PrayerWheel3DProps = {
 
 const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
   const [isLoading, setIsLoading] = useState(true);
-
+  
   // Handle loading state
   useEffect(() => {
     // Reset loading state when spinning status changes
@@ -21,8 +21,14 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
     }
   }, [isSpinning]);
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onSpin();
+  };
+
   return (
-    <div className="h-[500px] w-full relative cursor-pointer">
+    <div className="h-[500px] w-full relative cursor-pointer spline-container">
       {/* Display loading screen while the model is loading */}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 z-10">
@@ -33,12 +39,29 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
       )}
 
       {/* The Spline 3D model */}
-      <div onClick={onSpin} className="w-full h-full">
+      <div 
+        onClick={handleClick}
+        className="w-full h-full"
+      >
         <Spline
           scene="https://prod.spline.design/AphHP1HRKQk94T6p/scene.splinecode"
           onLoad={() => setIsLoading(false)}
         />
       </div>
+      
+      {/* Hide Spline watermark with CSS */}
+      <style jsx>{`
+        .spline-container::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 140px;
+          height: 40px;
+          background-color: white;
+          z-index: 1000;
+        }
+      `}</style>
     </div>
   );
 };

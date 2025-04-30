@@ -113,3 +113,41 @@
 .mantra-text {
   animation: float-up 3s forwards;
 }
+
+/* Hide Spline watermark */
+.spline-container canvas + div[style*="bottom: 0"] {
+  display: none !important;
+}
+
+.spline-container canvas + div {
+  display: none !important;
+}
+
+/* Float animation for merit text */
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+.animate-float-up {
+  animation: float-up 3s forwards;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .spline-container {
+    height: 400px !important;
+  }
+}
