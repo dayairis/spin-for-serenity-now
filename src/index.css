@@ -102,6 +102,7 @@
   }
 }
 
+/* Prayer wheel animations */
 .prayer-wheel {
   transition: transform 2s ease-in-out;
 }
@@ -114,40 +115,24 @@
   animation: float-up 3s forwards;
 }
 
-/* Hide Spline watermark */
-.spline-container canvas + div[style*="bottom: 0"] {
+/* Hide Spline logo and adjust container */
+.spline-container iframe {
+  pointer-events: auto;
+}
+
+.spline-container [data-spline-logo="true"],
+.spline-container [data-name="Built with Spline"] {
   display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
-.spline-container canvas + div {
+/* Target common class names used by Spline for their logo */
+.spline-watermark,
+.spline-builder,
+[class*="watermark"],
+[class*="logo-container"] {
   display: none !important;
-}
-
-/* Float animation for merit text */
-@keyframes float-up {
-  0% {
-    opacity: 0;
-    transform: translateY(0);
-  }
-  20% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-}
-
-.animate-float-up {
-  animation: float-up 3s forwards;
-}
-
-/* Mobile optimizations */
-@media (max-width: 640px) {
-  .spline-container {
-    height: 400px !important;
-  }
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
