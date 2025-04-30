@@ -49,19 +49,21 @@ const PrayerWheel3D = ({ isSpinning, onSpin }: PrayerWheel3DProps) => {
         />
       </div>
       
-      {/* Hide Spline watermark with CSS */}
-      <style jsx>{`
-        .spline-container::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 140px;
-          height: 40px;
-          background-color: white;
-          z-index: 1000;
-        }
-      `}</style>
+      {/* Instead of using style jsx, we'll use normal style tag - this fixes the TypeScript error */}
+      <style>
+        {`
+          .spline-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 140px;
+            height: 40px;
+            background-color: white;
+            z-index: 1000;
+          }
+        `}
+      </style>
     </div>
   );
 };
